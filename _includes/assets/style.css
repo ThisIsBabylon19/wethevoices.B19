@@ -1,0 +1,34 @@
+/*** CANCEL ***/
+html, body, main { width: 100%; height: 100%; }
+/*** END CANCEL ***/
+
+/*** COLORS ***/{% assign vColorPurple = '#340853' %}
+html { background-color: {{ vColorPurple }}; }
+/*** END COLORS ***/
+
+/*** MEDIA ***/
+html { background-image: url("../../assets/images/purple-background.png"); }
+html {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+/*** END MEDIA ***/
+
+/*** COMPONENTS ***/
+	/*** COMMONS ***/
+	main {}
+	
+/*** END COMPONENTS ***/
+
+/*** DECORATION ***/
+	/*** .cssCentered ***/
+	.cssCentered {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+/*** END DECORATION ***/
+
+/*** TO-DELETE ***/
+/*** END TO-DELETE ***/
