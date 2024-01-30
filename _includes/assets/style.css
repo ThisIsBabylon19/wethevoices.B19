@@ -72,6 +72,10 @@ html {
 		width: 100%; height: 100%;
 		padding: 1.9em;
 	}
+	.voices-audio,
+	.voices-title {
+		padding: .5em; 
+	}
 /*** END COMPONENTS ***/
 
 /*** INTERACTIVITY ***/
