@@ -1,1 +1,17 @@
 key: "WeTheVoices"
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+  electedechoes:
+    output: true
+    permalink: /elected-echoes/:path/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "electedechoes"
+    values:
+      layout: "electedechoes"

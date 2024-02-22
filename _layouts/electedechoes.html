@@ -1,0 +1,26 @@
+---
+layout: default
+---
+		{% for i in (1..10) %}
+		<input id="rdb4representative{{ i }}" type="radio" name="rdbs4representatives"{% if forloop.index == 3 %} checked{% endif %} />{% endfor %}
+		<main class="d-cssCentered">
+			<aside class="maps"><ul class="maps-list">
+				<li class="maps-list-item d-cssCentered"><img src="/assets/images/map_india.png" class="maps-img" /></li>
+				<li class="maps-list-item d-cssCentered"><img src="/assets/images/map_usa.png" class="maps-img" /></li>
+				<li class="maps-list-item d-cssCentered"><img src="/assets/images/map_south-africa.png" class="maps-img" /></li>
+			</ul></aside>
+		
+			<section class="representatives d-cssSnapPoints-wrapGrandParent">
+				<ul class="representatives-list d-cssSnapPoints-wrapParent">{% for i in (1..10) %}
+					<li class="representatives-list-item d-cssSnapPoints"><div class="representative">
+						<label for="rdb4representative{{ i }}" class="representative-name u-button">Queen Djinga!</label>
+					</div></li>{% endfor %}
+				</ul>
+				
+				<div class="representatives-background"><div class="representatives-background-inner"></div></div>
+			</section>
+
+			<footer class="footer">
+				&copy; Copyrights {{ site.time | split: '-' | first }} <a href="https://babylon19.org" class="u-link">Babylon19</a>. All rights reserved.
+			</footer>
+		</main>

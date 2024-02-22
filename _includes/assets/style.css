@@ -102,7 +102,7 @@ html {
 /*** END MEDIA-QUERIES ***/
 
 /*** DECORATION ***/
-	/*** .cssCentered ***/
+	/*** .d-cssCentered ***/
 	.d-cssCentered {
 		display: flex;
 		align-items: center;
