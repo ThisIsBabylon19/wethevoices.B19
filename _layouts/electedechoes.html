@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-		{% for i in (1..10) %}
-		<input id="rdb4representative{{ i }}" type="radio" name="rdbs4representatives"{% if forloop.index == 3 %} checked{% endif %} />{% endfor %}
+		{% for representatives in site.electedechoes %}
+		<input id="rdb4representative{{ forloop.index }}" type="radio" name="rdbs4representatives"{% if forloop.index == 1 %} checked{% endif %} />{% endfor %}
 		<main class="d-cssCentered">
 			<aside class="maps"><ul class="maps-list">
 				<li class="maps-list-item d-cssCentered"><img src="/assets/images/map_india.png" class="maps-img" /></li>
@@ -11,9 +11,9 @@ layout: default
 			</ul></aside>
 		
 			<section class="representatives d-cssSnapPoints-wrapGrandParent">
-				<ul class="representatives-list d-cssSnapPoints-wrapParent">{% for i in (1..10) %}
+				<ul class="representatives-list d-cssSnapPoints-wrapParent">{% for representatives in site.electedechoes %}
 					<li class="representatives-list-item d-cssSnapPoints"><div class="representative">
-						<label for="rdb4representative{{ i }}" class="representative-name u-button">Queen Djinga!</label>
+						<label for="rdb4representative{{ forloop.index }}" class="representative-name u-button">{{ representatives.url | split: '/' | last | replace: '_', '. ' }}</label>
 					</div></li>{% endfor %}
 				</ul>
 				
