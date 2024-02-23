@@ -113,6 +113,11 @@ html, body, main { width: 100%; height: 100%; }
 	.representative-name { font-size: 1.25em; }
 
 	.maps-img { height: 1.9em; width: auto; }
+	
+	
+	
+	.representative-name { text-indent: -999px; }{% for representatives in site.electedechoes %}
+	#rdb4representative{{ forloop.index }}:checked ~ main .representatives-list-item:nth-child({{ forloop.index }}) .representative-name { text-indent: initial !important; }{% endfor %}
 }
 @media all and (min-width: 50em) {
     body, html, main { font-size: 18px; }
@@ -171,9 +176,13 @@ html, body, main { width: 100%; height: 100%; }
 }{% for i in (1..5) %}
 #rdb4representative{{ forloop.index }}:checked ~ main .representatives-list-item:nth-child({{ forloop.index }}) { width: 40%; flex: 2; }{% endfor %}
 
-
 .representatives-background-inner { background-image: url("/assets/images/electedechoes/placeholder_monochrome.png") !important; }{% for representatives in site.electedechoes %}{% if forloop.first %}
 #rdb4representative1:checked ~ main .representatives-background-inner { background-image: url("/assets/images/electedechoes/{{ representatives.url | split: '/' | last | replace: '_', '-' }}_monochrome.png") !important; }{% endif %}{% endfor %}
+
+.representative-name {
+	border-width: .1em; border-style: solid;
+	border-color: black;
+}
 /*** END CSS-HACKS ***/
 
 /*** TO-DELETE ***/
