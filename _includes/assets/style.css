@@ -15,9 +15,11 @@ main { width: 100%; min-height: 100%; }
 html { background-color: white; }
 .footer,
 .footer *,
+.topic *,
 .voices * { color: white; }
 
 .footer,
+.topic,
 .voices { background-color: black; }
 /*** END COLORS ***/
 
@@ -27,9 +29,11 @@ html { background-color: white; }
 
 * { font-family: "Impact"; word-spacing: .15em; }
 .header-title,
+.topic-title,
 .voices-title { font-family: "Bauhaus"; line-height: 1.15em; word-spacing: initial !important; }
 
-.footer { text-align: center; }
+.footer,
+.topic { text-align: center; }
 .u-link { text-decoration: underline; }
 /*** END FONTS ***/
 
@@ -41,6 +45,15 @@ html {
 	background-size: cover;
 }
 /*** END MEDIA ***/
+
+/*** UTILITIES ***/
+	/*** .u-screen ***/
+	.u-screen { display: flex; }
+	
+	.u-screen {
+		width: 100%; height: 100%;
+	}
+/*** END UTILITIES ***/
 
 /*** COMPONENTS ***/
 	/*** COMMONS ***/
@@ -55,7 +68,7 @@ html {
 	/*** .header ***/
 	.header {
 		position: absolute;
-		margin-bottom: 19em;
+		margin-bottom: 25em;
 	}
 
 	/*** .maps ***/
@@ -67,14 +80,39 @@ html {
 		padding: 1em;
 	}
 	
+	/*** .topic ***/
+	.topic {
+		width: 100%;
+		padding: 3em 0;
+	}
+	.topic-title {
+		padding: 0 1.9em;
+		margin-bottom: .5em;
+	}
+	.topic-comments {
+		padding: 0 1em;
+	}
+	.topic-comments-p {
+		display: inline;
+		margin: 0 1em;
+		
+//		border: 1px solid purple;
+	}
+	
 	/*** .voices ***/
 	.voices {
 		width: 100%; height: 100%;
 		padding: 1.9em;
 	}
-	.voices-audio,
+	.voices-list {
+		width: 100%;
+	}
+	.voices-audio {
+		width: 100%;
+		padding: .5em;
+	}
 	.voices-title {
-		padding: .5em; 
+		padding: 1em 0;
 	}
 /*** END COMPONENTS ***/
 
@@ -86,18 +124,33 @@ html {
 @media all and (max-width: 50em) {
     body, html, main { font-size: 16px; }
 	.header-title { font-size: 2.5em; }
+	.topic-title,
 	.voices-title { font-size: 1.5em; }
+	.topic-comments-p { font-size: 1.125em; }
 	
 	.header-logo-img,
 	.maps-img { height: 1.9em; width: auto; }
+	
+	/*** .voices ***/
+	.voices-audio:nth-child(1),
+	.voices-audio:nth-child(3) { padding-left: 3em; padding-right: 3em; }
 }
 @media all and (min-width: 50em) {
     body, html, main { font-size: 18px; }
 	.header-title { font-size: 5em; }
+	.topic-title,
 	.voices-title { font-size: 2.5em; }
+	.topic-comments-p { font-size: 1.25em; }
 
 	.header-logo-img,
 	.maps-img { height: 3em; width: auto; }
+	
+	/*** .voices ***/
+	.voices-list { display: flex; }
+	.voices-audio { flex: 1; }
+	
+	.voices-audio:nth-child(1),
+	.voices-audio:nth-child(3) { margin-top: 3em; }
 }
 /*** END MEDIA-QUERIES ***/
 
@@ -109,7 +162,9 @@ html {
 		justify-content: center;
 	}
 	header.d-cssCentered,
-	main.d-cssCentered { flex-direction: column; }
+	main.d-cssCentered,
+	.voices.d-cssCentered,
+	.u-screen.d-cssCentered { flex-direction: column; }
 /*** END DECORATION ***/
 
 /*** TO-DELETE ***/
