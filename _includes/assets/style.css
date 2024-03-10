@@ -13,10 +13,12 @@ main { width: 100%; min-height: 100%; }
  { background-color: {{ vColorPurple }}; }
 
 html { background-color: white; }
+
+.electedechoes { background-color: #eee; }
 .footer,
 .footer *,
 .topic *,
-.voices * { color: white; }
+.voices * { color: #eee; }
 
 .footer,
 .topic,
@@ -48,6 +50,12 @@ html {
 /*** END MEDIA ***/
 
 /*** UTILITIES ***/
+	/*** .u-audio-tag ***/
+	.u-audio-tag {
+		width: 100%;
+		padding: .5em;
+	}
+
 	/*** .u-screen ***/
 	.u-screen { display: flex; }
 	
@@ -59,6 +67,11 @@ html {
 /*** COMPONENTS ***/
 	/*** COMMONS ***/
 	.voices { flex: 1; }
+	
+	/*** .electedechoes ***/
+	.electedechoes {
+		width: 100%; min-height: 50vh; height: 100%;
+	}
 	
 	/*** .footer ***/
 	.footer {
@@ -86,9 +99,9 @@ html {
 		width: 100%;
 		padding: 3em 0;
 	}
-	.topic-title {
-		padding: 0 1.9em;
-		margin-bottom: .5em;
+	.topic-commentary {
+		margin: 0 auto;
+		margin-top: 3em;
 	}
 	.topic-comments {
 		padding: 0 1em;
@@ -96,6 +109,10 @@ html {
 	.topic-comments-p {
 		display: inline;
 		margin: 0 1.9em;
+	}
+	.topic-title {
+		padding: 0 1.9em;
+		margin-bottom: .5em;
 	}
 	
 	/*** .voices ***/
@@ -105,10 +122,6 @@ html {
 	}
 	.voices-list {
 		width: 100%;
-	}
-	.voices-audio {
-		width: 100%;
-		padding: .5em;
 	}
 	.voices-title {
 		padding: 1em 0;
@@ -130,6 +143,9 @@ html {
 	.header-logo-img,
 	.maps-img { height: 1.9em; width: auto; }
 	
+	/*** .topic ***/
+	.topic-commentary { padding: 0 3em; }
+	
 	/*** .voices ***/
 	.voices-list-item:nth-child(1),
 	.voices-list-item:nth-child(3) { padding-left: 3em; padding-right: 3em; }
@@ -143,6 +159,9 @@ html {
 
 	.header-logo-img,
 	.maps-img { height: 3em; width: auto; }
+	
+	/*** .topic ***/
+	.topic-commentary { width: 50%; }
 	
 	/*** .voices ***/
 	.voices-list{ display: flex; }
@@ -164,7 +183,19 @@ html {
 	main.d-cssCentered,
 	.voices.d-cssCentered,
 	.u-screen.d-cssCentered { flex-direction: column; }
+	
+	/*** .d-textBG ***/
+	.d-textBG {
+		
+	}
+	.d-textBG-word {
+		vertical-align: top;
+		
+		border: 1px solid purple;
+	}
 /*** END DECORATION ***/
 
 /*** TO-DELETE ***/
+.electedechoes,
+.electedechoes * { text-align: left; }
 /*** END TO-DELETE ***/

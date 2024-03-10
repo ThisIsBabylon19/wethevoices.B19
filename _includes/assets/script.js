@@ -1,221 +1,124 @@
-var theQuestions4all = [
-	{ title: "What was your favorite scene and why?" },
-	{ title: "How did the character change throughout the story?" },
-	{ title: "Why did you think the author chose this setting? How did it relate to the plot?" },
-	{ title: "What surprised you while reading this book? Were there hints for the plot twists?" },
-	{ title: "What drew you into the book and made you keep reading?" },
-	{ title: "What was your favorite quote or passage?" },
-	{ title: "What themes or symbolism did you notice in the story?" },
-	{ title: "How did this world/setting relate to your own?" },
-	{ title: "Do you think the story was plot-based or character-driven?" },
-	{ title: "What other books did this remind you of? In what ways was this book better or worse?" },
-	{ title: "What was you initial impression of the book?" },
-	{ title: "Who was your favorite character? Why?" },
-	{ title: "Who was your least favorite character? Why?" },
-	{ title: "If this book were to become a movie, who would you cast?" },
-	{ title: "Did you have a favorite line or quote? Why?" },
-	{ title: "What themes are most emphasized throughout the novel?" },
-	{ title: "Do you think the author's life specifically influenced the novel?" },
-	{ title: "If you could ask the author one question, what would it be?" },
-	{ title: "If you could meet one of the characters, who would it be? Why?" },
-	{ title: "Did the book's plot & ending meet your expectactions?" },
-	{ title: "Could the novel be improved? What are your suggestions?" },
-	{ title: "Which places mentioned in the novel would you like to visit?" },
-	{ title: "Explain the author's purpose in writing this book?" },
-	{ title: "How does the book's title tie in to the manuscript?" },
-	{ title: "How would you rate the book on a scale of 1 to 10?" }
-]
-{% for file in site.data.books %}{% assign i = 0 %}{% capture i %}{{ forloop.index }}{% endcapture %}{% for data in file %}
-var theQuestions4{% for content in data[1] %}{{ content.id }}{% endfor %} = [{% for content in data[1] %}{% for theQuestions in content.questions %}
-	{ title: "{{ theQuestions }}" }{% if forloop.last %}{% else %},{% endif %}{% endfor %}{% endfor %}
-]{% endfor %}{% endfor %}
+	var text1 = "two two seven seven seven seven seven seven seven three three three eight eight eight eight eight eight eight eight five five five five five four four four four nine nine nine nine nine nine nine nine nine one ten ten ten ten ten ten ten ten ten ten six six six six six six",
+	text2 = "{% for file in site.data.electedechoes.senator_angela-sobey %}{{ file.text | downcase }}{% endfor %}",
+	words = sortByFrequency( text2.split(/[ ,.]+/) )
+		.map(function(d,i) {
+			//console.log(d);
+        	return {text: d, size: -i};
+        });
 
-var intobinary = $.noConflict();
-intobinary(document).ready(function() {
-	/*** GLOBAL VARIABLES & OBJECTS ***/
-	var htmlTag = intobinary("html"),
-		bookID = "theQuestions4all";
+var fontName = "Impact",
+	cWidth = document.documentElement.clientWidth,
+	cHeight = document.documentElement.clientHeight / 2,
+	svg,
+	wCloud,
+	bbox,
+	ctm,
+	bScale,
+	bWidth,
+	bHeight,
+	bMidX,
+	bMidY,
+	bDeltaX,
+	bDeltaY;
 
-	var sctBooksTag = intobinary(".js-sctBooks");
-	var activeBook = 1;
+window.onresize = getNewWindowSize;
+function getNewWindowSize(){
+  cWidth = document.documentElement.clientWidth;
+  cHeight = document.documentElement.clientHeight / 2;
+}
 
-	var questionTag = document.querySelector(".js-quizQuestion"),
-		questionIndexTag = document.querySelector(".js-quizQuestionIndex");
+
+var cTemp = document.createElement('canvas'),
+	ctx = cTemp.getContext('2d');
+	ctx.font = "100px " + fontName;
+
+var fRatio = Math.min(cWidth, cHeight) / ctx.measureText(words[0].text).width,
+	fontScale = d3.scale.linear()
+		.domain([
+			d3.min(words, function(d) { return d.size; }), 
+			d3.max(words, function(d) { return d.size; })
+		])
+		//.range([20,120]),
+		.range([20,100*fRatio/2]), // tbc
+	fill = d3.scale.category20();
+
+d3.layout.cloud()
+	.size([cWidth, cHeight])
+	.words(words)
+	//.padding(2) // controls
+	.rotate(function() { return ~~(Math.random() * 2) * 90; })
+	.font(fontName)
+	.fontSize(function(d) { return fontScale(d.size) })
+	.on("end", draw)
+	.start();
+
+function draw(words, bounds) {
+	// move and scale cloud bounds to canvas
+	// bounds = [{x0, y0}, {x1, y1}]
+	bWidth = bounds[1].x - bounds[0].x;
+	bHeight = bounds[1].y - bounds[0].y;
+	bMidX = bounds[0].x + bWidth/2;
+	bMidY = bounds[0].y + bHeight/2;
+	bDeltaX = cWidth/2 - bounds[0].x + bWidth/2;
+	bDeltaY = cHeight/2 - bounds[0].y + bHeight/2;
+	bScale = bounds ? Math.min( cWidth / bWidth, cHeight / bHeight) : 1;
 	
-	var quiz = [], currentQuestion = [],
-		qNoIndex = 0, qNoTotal = 100;
-	/*** END GLOBAL VARIABLES & OBJECTS ***/
+	console.log(
+		"bounds (" + bounds[0].x + 
+		", " + bounds[0].y + 
+		", " + bounds[1].x + 
+		", " + bounds[1].y + 
+		"), width " + bWidth +
+		", height " + bHeight +
+		", mid (" + bMidX +
+		", " + bMidY +
+		"), delta (" + bDeltaX +
+		", " + bDeltaY +
+		"), scale " + bScale
+	);
 	
-	/*** SETUP ***/
-	setupQuiz();
-	/*** END SETUP ***/
-
-	/*** ACTIONS ***/
-	intobinary(".js-btnBook").click(function() {
-		var that = intobinary(this);
-		var nextBook = that.parent("li").attr("activePosition");
-		sctBooksTag.attr("activeBook", nextBook);
-
-		swapBooks(nextBook);
-	});
-	intobinary(".js-btnBookNav.is-next").click(function() {
-		switchBooks("right");
-	});
-	intobinary(".js-btnBookNav.is-prev").click(function() {
-		switchBooks("left");
-	});
-
-	intobinary(".js-btnKit").click(function() {
-		if(htmlTag.attr("appStyle") == "theClub") {
-			htmlTag.attr("appStyle", "theKit");
-			intobinary(".js-btnKit").html("[close the kit]");
-			bookID = intobinary(this).attr("theBook");
-			
-//			alert(bookID);
-		}
-		else if(htmlTag.attr("appStyle") == "theKit") {
-			htmlTag.attr("appStyle", "theClub");
-			intobinary(".js-btnKit").html("[open the kit]");
-			bookID = "theQuestions4all";
-		}
-
-		setupQuiz();
-	});
-
-	intobinary(".js-btnNextQuestion").click(function() {
-//		resetQuestion();
-		nextQuestion();
-	});
-	intobinary(".js-btnRefresh").click(function() {
-		setupQuiz();
-	});
-	/*** END ACTIONS ***/
-
-	/*** FUNCTIONS ***/
-	function getItemPlacement(item, way) {
-		var itemPlacement = 0;
-
-		itemPlacement = item.attr("currentPlacement");
-
-		if(way == "right") {
-			itemPlacement--;
-			if(itemPlacement == 0) { itemPlacement = 9; }
-		}
-		if(way == "left") {
-			itemPlacement++;
-			if(itemPlacement == 10) { itemPlacement = 1; }
-		}
-
-		item.attr("currentPlacement", itemPlacement);
-	}
-
-	function getQuestions(arr) {
-		var randomQuestion = [];
-		qNoTotal = arr.length;
-
-		for (var i = arr.length; i >= 0; i--) {
-			randomQuestion.push(arr[i]);
-		}
-		
-		return randomQuestion;
-	}
-
-	function nextQuestion() {
-		if(qNoIndex > 0 && qNoIndex < qNoTotal) { preparePage(); }
-		
-		if (qNoIndex < qNoTotal) {
-			qNoIndex += 1;
-			currentQuestion = quiz.pop();
-			
-			questionIndexTag.innerHTML = "Question " + qNoIndex + "/" + qNoTotal;
-			
-			questionTag.textContent = currentQuestion.title;
-//			startSpeech(currentQuestion.title);
-		} else {
-//			resetApp("withChkbxQuiz");
-		}
-	}
-
-	function playQuiz(questionSet) {
-		quiz = getQuestions(questionSet);
-		
-		if (quiz.length === 0) {
-			alert("[ERROR:] No questions available.");
-			return;
-		} else {
-			nextQuestion();
-//			qNoTotal = quiz.length + 1;
-		}
-	}
+	// the library's bounds seem not to correspond to reality?
+	// try using .getBBox() instead?
 	
-	function preparePage() {}
+	svg = d3.select(".cloud").append("svg")
+		.attr("width", cWidth)
+		.attr("height", cHeight);
+	
+	wCloud = svg.append("g")
+		//.attr("transform", "translate(" + [bDeltaX, bDeltaY] + ") scale(" + 1 + ")") // nah!
+		.attr("transform", "translate(" + [bWidth>>1, bHeight>>1] + ") scale(" + bScale + ")") // nah!
+		.selectAll("text")
+		.data(words)
+		.enter().append("text")
+		.style("font-size", function(d) { return d.size + "px"; })
+		.style("font-family", fontName)
+		.style("fill", function(d, i) { return fill(i); })
+		.attr("text-anchor", "middle")
+		.transition()
+		.duration(500)
+		.attr("transform", function(d) {
+			return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+		})
+		.text(function(d) { return d.text; });
+	
+	// TO DO: function to find min and max x,y of all words
+	// and use it as the group's bbox
+	// then do the transformation
+	bbox = wCloud.node(0).getBBox();
+	//ctm = wCloud.node().getCTM();
+	console.log(
+		"bbox (x: " + bbox.x + 
+		", y: " + bbox.y + 
+		", w: " + bbox.width + 
+		", h: " + bbox.height + 
+		")"
+	);
+	
+};
 
-	function resetQuestion() {
-		/*
-		timerPaused = false;
-		
-		clearInterval(timerInterval);
-		intobinary(".quiz .js-button").removeClass("is-active");
-		
-		var theTimeButtonTag = intobinary(".js-button_time"),
-			thePauseButtonTag = intobinary(".js-button_pause"),
-			theTimerTag = document.querySelector(".js-timerTag"),
-			theQTimerTag = document.querySelector(".js-qTimerTag");
-			
-		thePauseButtonTag.removeClass("is-hidden");
-		if(theTimeButtonTag.hasClass("is-active")) {
-			theTimerTag.textContent = "01:00";
-			theQTimerTag.textContent = "01:00";
-		} else {
-			theTimerTag.textContent = "--:--";
-			theQTimerTag.textContent = "--:--";
-			
-			thePauseButtonTag.addClass("is-hidden");
-		}
-		*/
-	}
-
-	function setupQuiz() {
-		qNoIndex = 0;
-		if(bookID == "theQuestions4all") { playQuiz(theQuestions4all); }
-		else if (bookID == "theQuestions4helloBeautiful") { playQuiz(theQuestions4helloBeautiful); }
-		else if (bookID == "theQuestions4theCovenantOfWater") { playQuiz(theQuestions4theCovenantOfWater); }
-		else if (bookID == "theQuestions4womenWhoRunWithTheWolves") { playQuiz(theQuestions4womenWhoRunWithTheWolves); }
-
-		/*** alert(manual upload todo above.) ***/
-
-		/*
-		if(htmlTag.attr("appStyle") == "theClub") { playQuiz(theQuestions4all); }
-		else if(htmlTag.attr("appStyle") == "theKit") {
-			playQuiz(theQuestions4helloBeautiful);
-		}
-		*/
-	}
-
-	function switchBooks(way) {
-		{% for i in (1..9) %}
-		getItemPlacement(intobinary(".js-bookItem[activePosition='{{ i }}']"), way);{% endfor %}
-
-		activeBook = intobinary(".js-bookItem[currentPlacement='1']").attr("activePosition");
-		sctBooksTag.attr("activeBook", activeBook);
-	}
-
-	function swapBooks(nextBook) {
-		var placementA,
-			placementB,
-			placementTemp;
-
-		placementA = intobinary(".js-bookItem[activePosition='"+ activeBook +"']").attr("currentPlacement");
-		placementB = intobinary(".js-bookItem[activePosition='"+ nextBook +"']").attr("currentPlacement");
-
-		placementTemp = placementA;
-		placementA = placementB;
-		placementB = placementTemp;
-		
-		intobinary(".js-bookItem[activePosition='"+ activeBook +"']").attr("currentPlacement", placementA);
-		intobinary(".js-bookItem[activePosition='"+ nextBook +"']").attr("currentPlacement", placementB);
-
-		activeBook = nextBook;
-	}
-	/*** END FUNCTIONS ***/
-});
+function sortByFrequency(arr) {
+	var f = {};
+	arr.forEach(function(i) { f[i] = 0; });
+	var u = arr.filter(function(i) { return ++f[i] == 1; });
+	return u.sort(function(a, b) { return f[b] - f[a]; });
+}
