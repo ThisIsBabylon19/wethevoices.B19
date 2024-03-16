@@ -1,23 +1,36 @@
 ---
 layout: default
 ---
-		{% for representatives in site.electedechoes %}
-		<input id="rdb4representative{{ forloop.index }}" type="radio" name="rdbs4representatives"{% if forloop.index == 1 %} checked{% endif %} />{% endfor %}
-		<main class="d-cssCentered">
+		<main>
+			<!--
 			<aside class="maps"><ul class="maps-list">
 				<li class="maps-list-item d-cssCentered"><img src="/assets/images/map_india.png" class="maps-img" /></li>
 				<li class="maps-list-item d-cssCentered"><img src="/assets/images/map_usa.png" class="maps-img" /></li>
 				<li class="maps-list-item d-cssCentered"><img src="/assets/images/map_south-africa.png" class="maps-img" /></li>
 			</ul></aside>
+			-->
 		
-			<section class="representatives d-cssSnapPoints-wrapGrandParent">
-				<ul class="representatives-list d-cssSnapPoints-wrapParent">{% for representatives in site.electedechoes %}
-					<li class="representatives-list-item d-cssSnapPoints"><div class="representative">
-						<label for="rdb4representative{{ forloop.index }}" class="representative-name u-button">{{ representatives.url | split: '/' | last | replace: '_', '. ' }}</label>
-					</div></li>{% endfor %}
-				</ul>
-				
-				<div class="representatives-background"><div class="representatives-background-inner"></div></div>
+			<section class="header">
+				<hgroup class="header-hgroup">
+					<h1 class="header-hgroup-title">State Voice of the Month:</h1>
+					<h2 class="header-hgroup-name">Senator Angela Sobey</h2>
+				</hgroup>
+			</section>
+			
+			<section>
+				<div class="u-audio">
+					<h5 class="u-audio-caption">Topic: Education</h5>
+							
+					<audio class="u-audio-tag" controls>
+						<source src="/assets/audios/electedechoes_senator-angela-sobey.mp3" type="audio/mp3" />
+									
+						The browser does not support audio elements.
+					</audio>
+				</div>
+			</section>
+
+			<section class="d-tree">
+				<img src="/assets/images/tree.png" class="d-tree-img" />
 			</section>
 
 			<footer class="footer">
