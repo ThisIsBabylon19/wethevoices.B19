@@ -95,7 +95,7 @@ html, body { background-color: #eee; }
 /*** CSS-HACKS ***/
 .u-audio {
 	width: 70%;
-	margin: 0 auto;
+	margin: 3em auto;
 	text-align: center;
 }
 /*** END CSS-HACKS ***/
