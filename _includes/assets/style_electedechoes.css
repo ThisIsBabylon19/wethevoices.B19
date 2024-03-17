@@ -1,22 +1,11 @@
-/*** CANCEL ***/
-html, body { width: 100%; height: 100%; }
-main { min-height: 100%; }
-/*** END CANCEL ***/
-
 /*** COLORS ***/
-.footer { background-color: #0B0B09; }
-
-html, body { background-color: #eee; }
+.footer { background-color: black; }
 
 .footer, .footer * { color: white; }
 /*** END COLORS ***/
 
 /*** FONTS ***/
-@font-face{font-family:"Bauhaus";src:url("../../assets/fonts/BAUHS93.TTF");}
-@font-face{font-family:"Impact";src:url("../../assets/fonts/impact.TTF");}
-
 .header-hgroup-title { font-family: "Bauhaus"; }
-* { font-family: "Impact"; word-spacing: .15em; }
 
 .header-hgroup-title { font-size: 5em; }
 .header-hgroup-name { font-size: 3em; }
@@ -24,14 +13,6 @@ html, body { background-color: #eee; }
 .footer,
 .header-hgroup { text-align: center; }
 /*** END FONTS ***/
-
-/*** UTILITIES ***/
-	/*** .u-audio-tag ***/
-	.u-audio-tag {
-		width: 100%;
-		padding: .5em;
-	}
-/*** END UTILITIES ***/
 
 /*** COMPONENTS ***/
 	/*** COMMONS ***/
@@ -49,43 +30,9 @@ html, body { background-color: #eee; }
 	}
 	.header-hgroup-title,
 	.header-hgroup-name { display: block; }
-	
-	/*** .maps ***/
-	.maps-list { display: flex; }
-	.maps-list-item { flex: 1; }
-	
-	.maps {
-		width: 100%;
-		padding: 1em;
-	}
 /*** END COMPONENTS ***/
 
-/*** INTERACTIVITY ***/
-.u-button,
-.u-link { cursor: pointer; }
-/*** END INTERACTIVITY ***/
-
-/*** MEDIA-QUERIES ***/
-@media all and (max-width: 50em) {
-    body, html, main { font-size: 16px; }
-
-	.maps-img { height: 1.9em; width: auto; }
-}
-@media all and (min-width: 50em) {
-    body, html, main { font-size: 18px; }
-
-	.maps-img { height: 3em; width: auto; }
-}
-/*** END MEDIA-QUERIES ***/
-
 /*** DECORATION ***/
-	/*** .cssCentered ***/
-	.d-cssCentered {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	
 	/*** .d-tree ***/
 	.d-tree {
 		position: relative; top: .5em;

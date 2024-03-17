@@ -12,7 +12,7 @@ Coded for https://{{ site.key | downcase }}.babylon19.org.
 
 /*=== CUSTOM ===*/
 	{% include assets/reset.css %}
-	
+
 	{% include assets/style_default.css %}
-	{% include assets/style_electedechoes.css %}
+	{% include assets/style_welcome.css %}
 /*=== END CUSTOM ===*/

@@ -1,0 +1,104 @@
+/*** CANCEL ***/
+html, body { width: 100%; height: 100%; }
+main { width: 100%; min-height: 100%; }
+/*** END CANCEL ***/
+
+/*** Z-INDEXES ***/
+.u-trees-img { position: relative; z-index: 10; }
+.u-trees-text { position: relative; z-index: 20; }
+/*** END Z-INDEXES ***/
+
+/*** FONTS ***/
+@font-face{font-family:"Bauhaus";src:url("/assets/fonts/BAUHS93.TTF");}
+@font-face{font-family:"Impact";src:url("/assets/fonts/impact.TTF");}
+
+* { font-family: "Impact"; word-spacing: .15em; }
+.u-trees-text-title { font-family: "Bauhaus"; line-height: 1.15em; word-spacing: initial !important; }
+
+.u-trees-text { text-align: center; }
+.u-link { text-decoration: underline; }
+/*** END FONTS ***/
+
+/*** UTILITIES ***/
+	/*** .u-audio-tag ***/
+	.u-audio-tag {
+		width: 100%;
+		padding: .5em;
+	}
+	
+	/*** .u-link ***/
+	
+	/*** .u-maps ***/
+	.u-maps-list { display: flex; }
+	.u-maps-list-item { flex: 1; }
+	
+	.u-maps {
+		width: 100%;
+		padding: 1em;
+	}
+
+	/*** .u-screen ***/
+	.u-screen { display: flex; }
+	
+	.u-screen {
+		width: 100%; height: 100%;
+	}
+	
+	/*** .u-trees-text ***/
+	.u-trees-text {
+		position: absolute;
+	}
+/*** END UTILITIES ***/
+
+/*** INTERACTIVITY ***/
+.u-button,
+.u-link { cursor: pointer; }
+/*** END INTERACTIVITY ***/
+
+/*** MEDIA-QUERIES ***/
+@media all and (max-width: 50em) {
+	/*** FONTS ***/
+    body, html, main { font-size: 16px; }
+	.u-trees-text-title { font-size: 2.5em; }
+	
+	/*** COMMONS ***/
+	.u-maps-img,
+	.u-trees-text-logo-img { height: 1.9em; width: auto; }
+	
+	/*** UTILITIES: .u-trees ***/
+	.u-trees-text { margin-bottom: 7em; }
+}
+@media all and (min-width: 50em) {
+	/*** FONTS ***/
+    body, html, main { font-size: 18px; }
+	.u-trees-text-title { font-size: 5em; }
+	
+	/*** COMMONS ***/
+	.u-maps-img,
+	.u-trees-text-logo-img { height: 3em; width: auto; }
+	
+	/*** UTILITIES: .u-trees ***/
+	.u-trees-text { margin-bottom: 25em; }
+}
+/*** END MEDIA-QUERIES ***/
+
+/*** DECORATION ***/
+	/*** .d-cssCentered ***/
+	.d-cssCentered {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.u-screen.d-cssCentered,
+	.u-trees.d-cssCentered { flex-direction: column; }
+	
+	/*** .d-textBG ***/
+	.d-textBG {
+		
+	}
+	.d-textBG-word {
+		vertical-align: top;
+		
+		border: 1px solid purple;
+	}
+/*** END DECORATION ***/
