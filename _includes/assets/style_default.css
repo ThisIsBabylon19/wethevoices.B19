@@ -19,12 +19,61 @@ main { width: 100%; min-height: 100%; }
 .u-link { text-decoration: underline; }
 /*** END FONTS ***/
 
+/*** MEDIA ***/
+.u-audiogram-bar { background-image: url("/assets/images/electedechoes/senator-angela-sobey.png"); }
+.u-audiogram-bar {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: black;
+	
+	filter: grayscale(100%);
+}
+/*** END MEDIA ***/
+
 /*** UTILITIES ***/
-	/*** .u-audio-tag ***/
+	/*** .u-audio ***/
 	.u-audio-tag {
 		width: 100%;
 		padding: .5em;
 	}
+	
+	/*** .u-audiogram ***/
+	.u-audiogram {
+		width: 90%; height: 70vh;
+		display: block;
+		margin: 0 auto;
+//		border: 1px solid green;
+	}
+	.u-audiogram-dock {
+		width: auto; height: 100%;
+//		border: 1px solid purple;
+	}
+	.u-audiogram-bar {
+		width: 5%; height: 100%;
+		display: inline-block;
+		margin: .5em;
+	}
+		.u-audiogram-bar:nth-child(1) { height: 5%; }
+		.u-audiogram-bar:nth-child(2) { height: 10%; }
+		.u-audiogram-bar:nth-child(3) { height: 30%; }
+		.u-audiogram-bar:nth-child(4) { height: 19%; }
+		.u-audiogram-bar:nth-child(5) { height: 55%; }
+		.u-audiogram-bar:nth-child(6) { height: 75%; }
+		.u-audiogram-bar:nth-child(7) { height: 100%; }
+		.u-audiogram-bar:nth-child(8) { height: 79%; }
+		.u-audiogram-bar:nth-child(9) { height: 85%; }
+		.u-audiogram-bar:nth-child(10) { height: 75%; }
+		.u-audiogram-bar:nth-child(11) { height: 40%; }
+		.u-audiogram-bar:nth-child(12) { height: 90%; }
+		.u-audiogram-bar:nth-child(13) { height: 55%; }
+		.u-audiogram-bar:nth-child(14) { height: 45%; }
+		.u-audiogram-bar:nth-child(15) { height: 40%; }
+		.u-audiogram-bar:nth-child(16) { height: 30%; }
+		.u-audiogram-bar:nth-child(17) { height: 25%; }
+		.u-audiogram-bar:nth-child(18) { height: 15%; }
+		.u-audiogram-bar:nth-child(19) { height: 10%; }
 	
 	/*** .u-link ***/
 	
