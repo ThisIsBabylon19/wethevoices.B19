@@ -8,6 +8,13 @@ main { width: 100%; min-height: 100%; }
 .u-trees-text { position: relative; z-index: 20; }
 /*** END Z-INDEXES ***/
 
+/*** COLORS ***/
+.u-button { background-color: #eee; }
+
+.u-button,
+.u-button * { color: black !important; }
+/*** END COLORS ***/
+
 /*** FONTS ***/
 @font-face{font-family:"Bauhaus";src:url("/assets/fonts/BAUHS93.TTF");}
 @font-face{font-family:"Impact";src:url("/assets/fonts/impact.TTF");}
@@ -15,7 +22,9 @@ main { width: 100%; min-height: 100%; }
 * { font-family: "Impact"; word-spacing: .15em; }
 .u-trees-text-title { font-family: "Bauhaus"; line-height: 1.15em; word-spacing: initial !important; }
 
+.u-audio,
 .u-trees-text { text-align: center; }
+.u-button,
 .u-link { text-decoration: underline; }
 /*** END FONTS ***/
 
@@ -73,6 +82,12 @@ main { width: 100%; min-height: 100%; }
 		.u-audiogram-bar:nth-child(17) { height: 45%; }
 		.u-audiogram-bar:nth-child(18) { height: 15%; }
 		.u-audiogram-bar:nth-child(19) { height: 10%; }
+	
+	/*** .u-button ***/
+	.u-button {
+		padding: .5em 1em;
+		border-radius: 3em;
+	}
 	
 	/*** .u-link ***/
 	
@@ -156,3 +171,16 @@ main { width: 100%; min-height: 100%; }
 		border: 1px solid purple;
 	}
 /*** END DECORATION ***/
+
+/*** ANIMATION ***/
+.d-animate_audio,
+.d-animate_button { animation: heartBeat .5s infinite alternate; }
+
+@keyframes heartBeat { from { transform: scale(1); } to { transform: scale(1.1); } }
+/*** END ANIMATION ***/
+
+/*** CSS-HACKS ***/
+.u-audio.is-cssHack {
+	width: 33.333%;
+}
+/*** END CSS-HACKS ***/
