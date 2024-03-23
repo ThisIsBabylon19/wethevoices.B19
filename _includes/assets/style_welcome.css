@@ -91,26 +91,28 @@ html {
 
 /*** MEDIA-QUERIES ***/
 @media all and (max-width: 50em) {
+	/*** FONTS ***/
 	.topic-title,
 	.voices-title { font-size: 1.5em; }
 	.topic-comments-p { font-size: 1.125em; }
 	
-	/*** .topic ***/
+	/*** COMPONENTS: .topic ***/
 	.topic-commentary { padding: 0 3em; }
 	
-	/*** .voices ***/
+	/*** COMPONENTS: .voices ***/
 	.voices-list-item:nth-child(1),
 	.voices-list-item:nth-child(3) { padding-left: 3em; padding-right: 3em; }
 }
 @media all and (min-width: 50em) {
+	/*** FONTS ***/
 	.topic-title,
 	.voices-title { font-size: 2.5em; }
 	.topic-comments-p { font-size: 1.25em; }
 	
-	/*** .topic ***/
+	/*** COMPONENTS: .topic ***/
 	.topic-commentary { width: 50%; }
 	
-	/*** .voices ***/
+	/*** COMPONENTS: .voices ***/
 	.voices-list{ display: flex; }
 	.voices-list-item { flex: 1; }
 	
@@ -124,6 +126,9 @@ html {
 	main.d-cssCentered,
 	.voices.d-cssCentered { flex-direction: column; }
 /*** END DECORATION ***/
+
+/*** CSS-HACKS ***/
+/*** END CSS-HACKS ***/
 
 /*** TO-DELETE ***/
 .electedechoes,
