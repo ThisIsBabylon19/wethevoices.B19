@@ -130,7 +130,7 @@ main { width: 100%; min-height: 100%; }
 	.u-trees-text-logo-img { height: 1.9em; width: auto; }
 	
 	/*** UTILITIES: .u-audio ***/
-	.u-audio.is-cssHack { width: 25%; }
+	.u-audio.is-cssHack { width: 50%; }
 	
 	/*** UTILITIES: .u-audiogram ***/
 	.u-audiogram-bar { margin: .125em; }

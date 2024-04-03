@@ -15,7 +15,9 @@ html { background-color: white; }
 
 .footer,
 .topic,
-.voices { background-color: black; }
+.voices,
+.u-button.voices-list-button:active,
+.u-button.voices-list-button:focus { background-color: black; }
 /*** END COLORS ***/
 
 /*** FONTS ***/
@@ -29,11 +31,13 @@ html { background-color: white; }
 /*** END FONTS ***/
 
 /*** MEDIA ***/
-html {// background-image: url("../../assets/images/purple-background.png"); }
-html {
+.voices-list-button { background-image: url("../../assets/images/icon_refresh_black.png"); }
+.voices-list-button:active,
+.voices-list-button:focus { background-image: url("../../assets/images/icon_refresh_white.png"); }
+.voices-list-button {
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: cover;
+	background-size: 77%;
 }
 /*** END MEDIA ***/
 
@@ -79,7 +83,15 @@ html {
 		padding: 1.9em;
 	}
 	.voices-list {
+		position: relative;
 		width: 100%;
+	}
+	.voices-list-button {
+		text-indent: -9999px;
+		display: block; margin: 0 auto;
+		margin-bottom: .75em;
+		
+		width: 1.9em; height: 1.9em;
 	}
 	.voices-title {
 		padding: 1em 0;
@@ -87,6 +99,7 @@ html {
 /*** END COMPONENTS ***/
 
 /*** INTERACTIVITY ***/
+.voices-list { display: none; }
 /*** END INTERACTIVITY ***/
 
 /*** MEDIA-QUERIES ***/
@@ -99,7 +112,9 @@ html {
 	/*** COMPONENTS: .topic ***/
 	.topic-commentary { padding: 0 3em; }
 	
-	/*** COMPONENTS: .voices ***/
+	/*** COMPONENTS: .voices ***/{% for i in (1..2) %}
+	#rdb4VoicesList{{ i }}:checked ~ main .voices-list.nthChild-{{ i }},{% endfor %}
+	.jekyllPlaceholderClassName { display: block; }
 	.voices-list-item:nth-child(1),
 	.voices-list-item:nth-child(3) { padding-left: 3em; padding-right: 3em; }
 }
@@ -112,10 +127,14 @@ html {
 	/*** COMPONENTS: .topic ***/
 	.topic-commentary { width: 50%; }
 	
-	/*** COMPONENTS: .voices ***/
-	.voices-list{ display: flex; }
+	/*** COMPONENTS: .voices ***/{% for i in (1..2) %}
+	#rdb4VoicesList{{ i }}:checked ~ main .voices-list.nthChild-{{ i }},{% endfor %}
+	.jekyllPlaceholderClassName { display: flex; }
 	.voices-list-item { flex: 1; }
 	
+	.voices-list-button {
+		position: absolute; bottom: 0; left: 0; right: 0;
+	}
 	.voices-list-item:nth-child(1),
 	.voices-list-item:nth-child(3) { margin-top: 3em; }
 }
