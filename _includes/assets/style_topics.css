@@ -1,0 +1,155 @@
+/*** Z-INDEXES ***/
+.voices { position: relative; z-index: 10; }
+/*** END Z-INDEXES ***/
+
+/*** COLORS ***/{% assign vColorPurple = '#340853' %}
+ { background-color: {{ vColorPurple }}; }
+
+html { background-color: white; }
+
+.electedechoes { background-color: #eee; }
+.footer,
+.footer *,
+.topic *,
+.voices * { color: #eee; }
+
+.footer,
+.topic,
+.voices,
+.u-button.voices-list-button:active,
+.u-button.voices-list-button:focus { background-color: black; }
+/*** END COLORS ***/
+
+/*** FONTS ***/
+ { font-family: "Impact"; word-spacing: .15em; }
+.topic-title,
+.voices-title { font-family: "Bauhaus"; line-height: 1.15em; word-spacing: initial !important; }
+
+.footer,
+.topic,
+.voices-list-item { text-align: center; }
+/*** END FONTS ***/
+
+/*** MEDIA ***/
+.voices-list-button { background-image: url("../../assets/images/icon_refresh_black.png"); }
+.voices-list-button:active,
+.voices-list-button:focus { background-image: url("../../assets/images/icon_refresh_white.png"); }
+.voices-list-button {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 77%;
+}
+/*** END MEDIA ***/
+
+/*** COMPONENTS ***/
+	/*** COMMONS ***/
+	.voices { flex: 1; }
+	
+	/*** .electedechoes ***/
+	.electedechoes {
+		width: 100%; min-height: 50vh; height: 100%;
+	}
+	
+	/*** .footer ***/
+	.footer {
+		width: 100%;
+		padding: 1em;
+	}
+	
+	/*** .topic ***/
+	.topic {
+		width: 100%;
+		padding: 3em 0;
+	}
+	.topic-commentary {
+		margin: 0 auto;
+		margin-top: 7em;
+	}
+	.topic-comments {
+		padding: 0 1em;
+	}
+	.topic-comments-p {
+		display: inline;
+		margin: 0 1.9em;
+	}
+	.topic-title {
+		padding: 0 1.9em;
+		margin-bottom: .5em;
+	}
+	
+	/*** .voices ***/
+	.voices {
+		width: 100%; height: 100%;
+		padding: 1.9em;
+	}
+	.voices-list {
+		position: relative;
+		width: 100%;
+	}
+	.voices-list-button {
+		text-indent: -9999px;
+		display: block; margin: 0 auto;
+		margin-bottom: .75em;
+		
+		width: 1.9em; height: 1.9em;
+	}
+	.voices-title {
+		padding: 1em 0;
+	}
+/*** END COMPONENTS ***/
+
+/*** INTERACTIVITY ***/
+.voices-list { display: none; }
+/*** END INTERACTIVITY ***/
+
+/*** MEDIA-QUERIES ***/
+@media all and (max-width: 50em) {
+	/*** FONTS ***/
+	.topic-title,
+	.voices-title { font-size: 1.5em; }
+	.topic-comments-p { font-size: 1.125em; }
+	
+	/*** COMPONENTS: .topic ***/
+	.topic-commentary { padding: 0 3em; }
+	
+	/*** COMPONENTS: .voices ***/{% for i in (1..2) %}
+	#rdb4VoicesList{{ i }}:checked ~ main .voices-list.nthChild-{{ i }},{% endfor %}
+	.jekyllPlaceholderClassName { display: block; }
+	.voices-list-item:nth-child(1),
+	.voices-list-item:nth-child(3) { padding-left: 3em; padding-right: 3em; }
+}
+@media all and (min-width: 50em) {
+	/*** FONTS ***/
+	.topic-title,
+	.voices-title { font-size: 2.5em; }
+	.topic-comments-p { font-size: 1.25em; }
+	
+	/*** COMPONENTS: .topic ***/
+	.topic-commentary { width: 50%; }
+	
+	/*** COMPONENTS: .voices ***/{% for i in (1..2) %}
+	#rdb4VoicesList{{ i }}:checked ~ main .voices-list.nthChild-{{ i }},{% endfor %}
+	.jekyllPlaceholderClassName { display: flex; }
+	.voices-list-item { flex: 1; }
+	
+	.voices-list-button {
+		position: absolute; bottom: 0; left: 0; right: 0;
+	}
+	.voices-list-item:nth-child(1),
+	.voices-list-item:nth-child(3) { margin-top: 3em; }
+}
+/*** END MEDIA-QUERIES ***/
+
+/*** DECORATION ***/
+	/*** .d-cssCentered ***/
+	main.d-cssCentered,
+	.voices.d-cssCentered { flex-direction: column; }
+/*** END DECORATION ***/
+
+/*** CSS-HACKS ***/
+/*** END CSS-HACKS ***/
+
+/*** TO-DELETE ***/
+.electedechoes,
+.electedechoes * { text-align: left; }
+/*** END TO-DELETE ***/

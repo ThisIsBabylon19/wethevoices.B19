@@ -7,6 +7,9 @@ collections:
   electedechoes:
     output: true
     permalink: /elected-echoes/:path/
+  topics:
+    output: true
+    permalink: /:path/
 
 defaults:
   -
@@ -15,3 +18,9 @@ defaults:
       type: "electedechoes"
     values:
       layout: "electedechoes"
+  -
+    scope:
+      path: ""
+      type: "topics"
+    values:
+      layout: "topics"
