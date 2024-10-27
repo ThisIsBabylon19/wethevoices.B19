@@ -147,6 +147,12 @@ html { background-color: white; }
 /*** END DECORATION ***/
 
 /*** CSS-HACKS ***/
+.videos {
+	width: 100%;
+	padding: 4em 1em;
+	text-align: center;
+	background-color: black;
+}
 /*** END CSS-HACKS ***/
 
 /*** TO-DELETE ***/
