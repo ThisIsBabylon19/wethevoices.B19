@@ -153,6 +153,9 @@ html { background-color: white; }
 	text-align: center;
 	background-color: black;
 }
+.videos-video {
+	max-width: 70%;
+}
 /*** END CSS-HACKS ***/
 
 /*** TO-DELETE ***/
