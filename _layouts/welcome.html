@@ -70,7 +70,7 @@ layout: default
 				</section>
 			</section>
 			
-			<section class="topic">
+			<section class="topic has-extra">
 				<h2 class="topic-title">Parliamentary Debates 2024: <br />"Basic Education Laws Amendment"</h2>
 				<div class="topic-comments">{% for comment in site.data.topic-comments %}
 					<p class="topic-comments-p">"{{ comment }}"</p>{% endfor %}
@@ -104,6 +104,9 @@ layout: default
 					</audio>
 				</div>
 			</section>
+					<marquee class="u-placeholder">
+						{% for i in (1..9) %}<span class="u-placeholder-audio"></span>{% endfor %}
+					</marquee>
 
 			<section class="videos">
 				<video class="videos-video" controls preload="none" loading="lazy">

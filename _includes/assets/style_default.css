@@ -9,8 +9,10 @@ main { width: 100%; min-height: 100%; }
 /*** END Z-INDEXES ***/
 
 /*** COLORS ***/
-.u-button { background-color: #eee; }
+.u-button,
+.u-placeholder-audio { background-color: #eee; }
 
+.u-placeholder { background-color: black; }
 .u-button,
 .u-button * { color: black !important; }
 /*** END COLORS ***/
@@ -38,6 +40,13 @@ main { width: 100%; min-height: 100%; }
 	background-color: black;
 	
 	filter: grayscale(100%);
+}
+
+.u-placeholder-audio { background-image: url("/assets/images/gif.webp"); }
+.u-placeholder-audio {
+	background-size: auto 70%;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 /*** END MEDIA ***/
 
@@ -99,6 +108,18 @@ main { width: 100%; min-height: 100%; }
 	.u-maps {
 		width: 100%;
 		padding: 1em;
+	}
+	
+	/*** .u-placeholder ***/
+	.u-placeholder {
+		width: 100%;
+	}
+	.u-placeholder-audio {
+		width: 19em; height: 1.9em;
+		display: inline-block;
+		margin: 0 1.9em;
+		
+		border-radius: 3em;
 	}
 
 	/*** .u-screen ***/
