@@ -70,7 +70,7 @@ layout: default
 				</section>
 			</section>
 			
-			<section class="topic has-extra">
+			<section class="topic">
 				<h2 class="topic-title">Parliamentary Debates 2024: <br />"Basic Education Laws Amendment"</h2>
 				<div class="topic-comments">{% for comment in site.data.topic-comments %}
 					<p class="topic-comments-p">"{{ comment }}"</p>{% endfor %}
@@ -98,15 +98,23 @@ layout: default
 					<h5 class="topic-commentary u-audio-caption">Richfield and the Plague <br />of South African Education</h5>
 							
 					<audio class="topic-commentary-audio u-audio-tag" controls preload="none" loading="lazy">
-						<source src="/assets/audios/community-survey.mp3" type="audio/mp3" />
+						<source src="/assets/audios/trashfield_mr-john-laughing.mp3" type="audio/mp3" />
 									
 						The browser does not support audio elements.
 					</audio>
 				</div>
+				<marquee class="topic-marquee">{% for i in (1..10) %}
+					<div class="u-audio">
+						<h5 class="u-audio-caption">Public Voice {{ i }}</h5>
+								
+						<audio class="u-audio-tag" controls preload="none" loading="lazy">
+							<source src="/assets/audios/trashfield_mr-john-laughing.mp3" type="audio/mp3" />
+										
+							The browser does not support audio elements.
+						</audio>
+					</div>{% endfor %}
+				</marquee>
 			</section>
-					<marquee class="u-placeholder">
-						{% for i in (1..9) %}<span class="u-placeholder-audio"></span>{% endfor %}
-					</marquee>
 
 			<section class="videos">
 				<video class="videos-video" controls preload="none" loading="lazy">
